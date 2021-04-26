@@ -14,6 +14,8 @@ def create_app(config_name):
     app = Flask(_name__, instance_relative_config=False)
     app.config.from_object(config[config_name])
 
+    from .models import User, Contact
+
     # Initialize plugins
     db.init_app(app)
     migrate.init_app(app, db)
