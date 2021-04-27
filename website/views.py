@@ -5,4 +5,4 @@ views = Blueprint('views', __name__)
 
 @views.route('/contacts')
 def contacts():
-    pass
+    return '<h1>Contacts</h1>'

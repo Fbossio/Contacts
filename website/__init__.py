@@ -1,5 +1,5 @@
 from flask import Flask
-from config import Config
+from config import config
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -12,7 +12,7 @@ login_manager.login_view = "auth.login"
 
 
 def create_app(config_name):
-    app = Flask(_name__, instance_relative_config=False)
+    app = Flask(__name__, instance_relative_config=False)
     app.config.from_object(config[config_name])
 
     from .models import User, Contact
