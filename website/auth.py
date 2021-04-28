@@ -3,6 +3,7 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+from .forms import Register, Login
 
 
 auth = Blueprint('auth', __name__)
@@ -10,7 +11,8 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/')
 def login():
-    return render_template('base.html')
+    form = Login()
+    return render_template('login.html', form=form)
 
 
 @auth.route('/logout')
