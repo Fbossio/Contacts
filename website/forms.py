@@ -6,11 +6,11 @@ from wtforms.validators import DataRequired, InputRequired, Length, Email, Equal
 class Register(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password1 = StringField('Password', validators=[
-                            DataRequired(), Length(min=7), EqualTo('password2')])
-    password2 = StringField('Confirm Password', validators=[DataRequired()])
+    password1 = PasswordField('Password', validators=[
+        DataRequired(), Length(min=7), EqualTo('password2')])
+    password2 = PasswordField('Confirm Password', validators=[DataRequired()])
 
 
 class Login(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = StringField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
