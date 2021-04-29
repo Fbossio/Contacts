@@ -1,3 +1,5 @@
+/* Slide navbar links */
+
 const navSlide = () => {
   const burger = document.querySelector(".burger");
   const nav = document.querySelector(".navLinks");
@@ -16,8 +18,20 @@ const navSlide = () => {
   };
 };
 
+/* Close alerts */
+const closeAlerts = () => {
+  const closeButtons = document.querySelectorAll(".close-alert");
+
+  for (let closeButton of closeButtons) {
+    closeButton.onclick = (e) => {
+      e.target.parentNode.remove();
+    };
+  }
+};
+
 const app = () => {
   navSlide();
+  closeAlerts();
 };
 
 app();
