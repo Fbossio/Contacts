@@ -200,6 +200,14 @@ body {
   font-weight: bold;
 }
 
+/* Contacts */
+
+.contacts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4rem;
+}
+
 /* Material Alerts */
 
 .materialert {
@@ -246,20 +254,30 @@ body {
 .materialert.info {
   background-color: #039be5;
   color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .materialert.success {
   background-color: #43a047;
   color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .materialert.error {
   background-color: #c62828;
   color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .materialert.danger {
   background-color: #c62828;
   color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .materialert.warning {
   background-color: #fbc02d;
   color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
 }

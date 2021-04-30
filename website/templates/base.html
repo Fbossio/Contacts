@@ -34,15 +34,18 @@
     <nav class="navegation">
       <div class="logo">Contacts</div>
       <ul class="navLinks">
+        {% if user.is_authenticated %}
         <li>
-          <a href="#"><span class="anchor-text">Logout</span></a>
+          <a href="/logout"><span class="anchor-text">Logout</span></a>
         </li>
+        {% else %}
         <li>
           <a href="/"><span class="anchor-text">Login</span></a>
         </li>
         <li>
           <a href="/sign_up"><span class="anchor-text">Sign-Up</span></a>
         </li>
+        {% endif %}
       </ul>
       <div class="burger">
         <div class="burger-line" id="line1"></div>
