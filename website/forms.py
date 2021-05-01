@@ -29,3 +29,7 @@ class UserContact(FlaskForm):
     phone = StringField('Phone', validators=[DataRequired(), InputRequired()])
     contact_type = SelectField('Type', choices=[(
         'Personal', 'Personal'), ('Profesional', 'Profesional'), ('Other', 'Other')])
+
+
+class Search(FlaskForm):
+    search = StringField('Search', validators=[DataRequired()])

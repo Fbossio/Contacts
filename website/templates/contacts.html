@@ -1,32 +1,42 @@
 {% extends "base.html" %} {% block title %} Contacts {% endblock %} {% block
 content%}
-<div class="contacts-container">
-  <div class="form-contact">
-    <h5>Add <span class="text-2">Contact</span></h5>
+<div class="row">
+  <div class="col-sm">
+    <h5>Add Contact</h5>
     <form action="/contacts" method="POST">
       {{ form.csrf_token }}
       <div class="form-group">
-        {{ form.name(class_='form-input', placeholder='Name') }}
+        {{ form.name(class_='form-control', placeholder='Name') }}
       </div>
 
       <div class="form-group">
-        {{ form.email(type='email', class_='form-input', placeholder='Email') }}
+        {{ form.email(type='email', class_='form-control', placeholder='Email')
+        }}
       </div>
 
       <div class="form-group">
-        {{ form.phone(class_='form-input', placeholder='Phone') }}
+        {{ form.phone(class_='form-control', placeholder='Phone') }}
       </div>
 
       <div class="form-group">
         <label for="contact_type">{{ form.contact_type.label }}</label>
-        {{ form.contact_type }}
+        {{ form.contact_type(class_="form-control") }}
       </div>
-      <button class="form-button" type="submit">Add Contact</button>
+
+      <button type="submit" class="btn btn-primary">Add Contact</button>
     </form>
   </div>
+  <div class="col-sm">
+    <h5>Contacts</h5>
+    <form class="form-inline">
+      {{ searchForm.search(class_='form-control mr-lg-2', placeholder='Search',
+      type="search") }}
 
-  <div class="display-contact">
-    <h5>Search contacts</h5>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
   </div>
 </div>
+
 {% endblock %}

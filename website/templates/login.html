@@ -1,24 +1,17 @@
 {% extends "base.html" %} {% block title %} Home {% endblock %} {% block content
 %}
-<div class="form-container">
-  <form class="login-form" method="POST" action="/">
-    {{ form.csrf_token }}
-    <div class="form-group">
-      <label for="email" class="input-label"
-        ><span class="input-label-text">{{form.email.label}}</span></label
-      >
-      {{form.email(type='email', class_='form-input')}}
-    </div>
+<form method="POST" action="/">
+  {{ form.csrf_token }}
+  <div class="form-group">
+    <label for="email">{{ form.email.label }}</label>
+    {{form.email(type='email', class_='form-control')}}
+  </div>
+  <div class="form-group">
+    <label for="password">{{ form.password.label }}</label>
+    {{form.password(class_='form-control')}}
+  </div>
 
-    <div class="form-group">
-      <label for="password" class="input-label"
-        ><span class="input-label-text">{{form.password.label}}</span></label
-      >
-      {{form.password(class_='form-input')}}
-    </div>
-
-    <button class="form-button" type="submit">Login</button>
-  </form>
-</div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
 
 {% endblock %}
