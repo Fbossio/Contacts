@@ -3,7 +3,7 @@ content%}
 <div class="row">
   <div class="col-sm">
     <h5>Add Contact</h5>
-    <form action="/contacts" method="POST">
+    <form method="POST" id="add-contact">
       {{ form.csrf_token }}
       <div class="form-group">
         {{ form.name(class_='form-control', placeholder='Name') }}
@@ -19,23 +19,44 @@ content%}
       </div>
 
       <div class="form-group">
-        <label for="contact_type">{{ form.contact_type.label }}</label>
-        {{ form.contact_type(class_="form-control") }}
+        <label for="contact_type">Type</label>
+        <select name="contact_type" id="contact_type" class="form-control">
+          <option value="Professional">Professional</option>
+          <option value="Personal">Personal</option>
+          <option value="Other" selected>Other</option>
+        </select>
       </div>
 
-      <button type="submit" class="btn btn-primary">Add Contact</button>
+      <button type="submit" class="btn btn-primary" id="add-button">
+        Add Contact
+      </button>
     </form>
   </div>
   <div class="col-sm">
     <h5>Contacts</h5>
-    <form class="form-inline">
-      {{ searchForm.search(class_='form-control mr-lg-2', placeholder='Search',
-      type="search") }}
-
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        <i class="fas fa-search"></i>
-      </button>
-    </form>
+    {% for d in data %}
+    <div class="card mb-2">
+      <div class="card-header">{{ d.name }}</div>
+      <div class="card-body">
+        <div class="row">
+          <p class="contact-info col-sm-4">Email:</p>
+          <p class="card-text col-sm-8">{{ d.email }}</p>
+        </div>
+        <div class="row">
+          <p class="contact-info col-sm-4">Phone:</p>
+          <p class="card-text col-sm-8">{{ d.phone }}</p>
+        </div>
+        <div class="row">
+          <p class="contact-info col-sm-4">Type:</p>
+          <p class="card-text col-sm-8">{{ d.Type }}</p>
+        </div>
+        <a href="#" class="btn btn-success">Edit</a>
+        <a href="#" class="btn btn-danger deleteButton" data-id="{{d.id}}"
+          >Delete</a
+        >
+      </div>
+    </div>
+    {% endfor %}
   </div>
 </div>
 

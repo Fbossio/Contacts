@@ -1,37 +1,64 @@
 /* Slide navbar links */
 
-const navSlide = () => {
-  const burger = document.querySelector(".burger");
-  const nav = document.querySelector(".navLinks");
-  let clicks = 0;
+/* Clear add contacts form */
 
-  burger.onclick = () => {
-    clicks += 1;
-    if (clicks % 2 == 1) {
-      nav.style.cssText =
-        "transform: translateX(0%); transition: transform 0.5s ease-in;";
-    }
-    if (clicks > 0 && clicks % 2 == 0) {
-      nav.style.cssText =
-        "transform: translateX(100%); transition: transform 0.5s ease-in;";
-    }
+const clearAdd = () => {
+  const button = document.querySelector("#add-button");
+
+  button.onclick = (e) => {
+    e.preventDefault();
+    const addForm = document.querySelector("#add-contact");
+    const csrf_token = document.querySelector("#csrf_token");
+
+    contactName = addForm.name.value;
+    email = addForm.email.value;
+    phone = addForm.phone.value;
+    Type = addForm.contact_type.value;
+
+    fetch("/contacts", {
+      method: "POST",
+      body: JSON.stringify({
+        csrf_token: csrf_token.value,
+        name: contactName,
+        email: email,
+        phone: phone,
+        Type: Type,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => {
+      addForm.email.value = "";
+      addForm.email.value = "";
+      addForm.phone.value = "";
+
+      window.location.href = "/contacts";
+    });
   };
 };
 
-/* Close alerts */
-const closeAlerts = () => {
-  const closeButtons = document.querySelectorAll(".close-alert");
-
-  for (let closeButton of closeButtons) {
-    closeButton.onclick = (e) => {
-      e.target.parentNode.remove();
+const delContacts = () => {
+  const delButtons = document.querySelectorAll(".deleteButton");
+  for (delButton of delButtons) {
+    delButton.onclick = (e) => {
+      e.preventDefault();
+      const contactId = e.target.dataset["id"];
+      fetch(`/delete_contact/${contactId}`, {
+        method: "DELETE",
+      })
+        .then(() => {
+          window.location.href = "/contacts";
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
     };
   }
 };
 
 const app = () => {
-  navSlide();
-  closeAlerts();
+  clearAdd();
+  delContacts();
 };
 
 app();

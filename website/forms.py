@@ -27,8 +27,8 @@ class UserContact(FlaskForm):
     email = StringField('Email', validators=[
                         DataRequired(), Email(), InputRequired()])
     phone = StringField('Phone', validators=[DataRequired(), InputRequired()])
-    contact_type = SelectField('Type', choices=[(
-        'Personal', 'Personal'), ('Profesional', 'Profesional'), ('Other', 'Other')])
+    # contact_type = SelectField('Type', coerce=str, choices=[(
+    #   'Personal', 'Personal'), ('Profesional', 'Profesional'), ('Other', 'Other')])
 
 
 class Search(FlaskForm):
