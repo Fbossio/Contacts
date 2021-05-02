@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, render_template, flash, request, jsonify
+from flask import Flask, Blueprint, render_template, flash, request, jsonify, redirect, url_for
 from flask_login import login_required, current_user
 from .forms import UserContact, Search
 from .models import Contact
@@ -50,5 +50,25 @@ def delete_contact(contactId):
 @login_required
 def update_contact(contactId):
     contact = Contact.query.get(contactId)
+
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        Type = request.form.get('contact_type')
+
+        try:
+            old_contact = Contact.query.get(contactId)
+            old_contact.name = name
+            old_contact.email = email
+            old_contact.phone = phone
+            old_contact.Type = Type
+
+            db.session.commit()
+            flash('Contact updated!', category='success')
+            return redirect(url_for('views.contacts'))
+        except AssertionError as error:
+            flash(error, category='error')
+            db.session.rollback()
 
     return render_template('update_contact.html',  user=current_user, contact=contact)
