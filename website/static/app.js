@@ -56,9 +56,17 @@ const delContacts = () => {
   }
 };
 
+const cancelUpdate = () => {
+  const cancelButton = document.querySelector("#cancel-button");
+  cancelButton.onclick = (e) => {
+    window.location.href = "/contacts";
+  };
+};
+
 const app = () => {
   clearAdd();
   delContacts();
+  cancelUpdate();
 };
 
 app();

@@ -65,7 +65,7 @@ def update_contact(contactId):
             old_contact.Type = Type
 
             db.session.commit()
-            flash('Contact updated!', category='success')
+
             return redirect(url_for('views.contacts'))
         except AssertionError as error:
             flash(error, category='error')
