@@ -50,8 +50,8 @@ content%}
           <p class="contact-info col-sm-4">Type:</p>
           <p class="card-text col-sm-8">{{ d.Type }}</p>
         </div>
-        <a href="#" class="btn btn-success">Edit</a>
-        <a href="#" class="btn btn-danger deleteButton" data-id="{{d.id}}"
+        <a href="/update_contact/{{ d.id }}" class="btn btn-success">Edit</a>
+        <a href="#" class="btn btn-danger deleteButton" data-id="{{ d.id }}"
           >Delete</a
         >
       </div>

@@ -44,3 +44,11 @@ def delete_contact(contactId):
             flash(error, category='error')
             db.session.rollback()
     return jsonify({})
+
+
+@views.route('/update_contact/<contactId>', methods=['GET', 'POST'])
+@login_required
+def update_contact(contactId):
+    contact = Contact.query.get(contactId)
+
+    return render_template('update_contact.html',  user=current_user, contact=contact)

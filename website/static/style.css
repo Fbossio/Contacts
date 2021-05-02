@@ -26,3 +26,8 @@ body {
 .contact-info {
   font-weight: 800;
 }
+
+.form-container {
+  width: 60%;
+  margin: 0 auto;
+}

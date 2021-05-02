@@ -1,0 +1,67 @@
+{% extends "base.html" %} {% block title %} Update {% endblock %} {% block
+content%}
+<div class="form-container">
+  <h5>Update Contact</h5>
+  <form
+    method="POST"
+    id="update-contact"
+    action="/update_contact/{{ contact.id }}"
+    class="mt-5"
+  >
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        name="name"
+        class="form-control"
+        value="{{ contact.name }}"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        ,
+        value="{{ contact.email }}"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input
+        type="text"
+        name="phone"
+        class="form-control"
+        ,
+        value="{{ contact.phone }}"
+        required
+      />
+    </div>
+   
+  <div class="form-group">
+    <label for="contact_type">Type</label>
+    <select name="contact_type" id="contact_type" class="form-control">
+      <option value="Professional" {% if contact.Type == 'Professional' %} selected {% else %} '' {% endif %}>Professional</option>
+      <option value="Personal" {% if contact.Type == 'Personal' %} selected {% else %} '' {% endif %}>Personal</option>
+      <option value="Other" {% if contact.Type == 'Other' %} selected {% else %} '' {% endif %}>Other</option>
+    </select>    
+  </div>
+  
+
+    <div class="row">
+      <div class="col-sm-6">
+        <button type="submit" class="btn btn-success">Update</button>
+      </div>
+      <div class="col-sm-6">
+        <button class="btn btn-warning" id="cancel-button">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
