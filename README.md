@@ -1,3 +1,5 @@
+![GitHub watchers](https://img.shields.io/github/watchers/Fbossio/contacts?style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/Fbossio/contacts?style=plastic)
+
 # Contacts
 
 Clean contact manager web application built with HTML, CSS, Bootstrap and Javascript on the Front end and Python/Flask on the Back end.
