@@ -1,4 +1,4 @@
-![GitHub watchers](https://img.shields.io/github/watchers/Fbossio/contacts?style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/Fbossio/contacts?style=plastic)
+![GitHub watchers](https://img.shields.io/github/watchers/Fbossio/contacts?style=plastic) ![GitHub language count](https://img.shields.io/github/languages/count/Fbossio/contacts?style=plastic) ![GitHub](https://img.shields.io/github/license/Fbossio/contacts?style=plastic)
 
 # Contacts
 
